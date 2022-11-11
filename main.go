@@ -23,6 +23,7 @@ import (
 // }
 
 func main() {
+	// Load logo
 	util.Figure()
 
 	// Load configuration
@@ -34,6 +35,7 @@ func main() {
 	log.Println("[INFO] Setting up database...")
 	database.Init()
 
+	// Run
 	log.Println("[INFO] Running API!")
 	r := router.Generate()
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.ApiPort), r))
