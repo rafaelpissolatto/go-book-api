@@ -16,3 +16,4 @@
 
 # Local envs / tests
 .env
+.vscode
