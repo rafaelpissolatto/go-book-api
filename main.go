@@ -3,6 +3,7 @@ package main
 import (
 	"api/src/config"
 	"api/src/database"
+	"api/src/metrics"
 	"api/src/router"
 	"api/src/util"
 	"fmt"
@@ -28,12 +29,16 @@ func main() {
 
 	// Load configuration
 	config.Load()
-	fmt.Println("[INFO] Database connection string", config.StringConnectionDB)
-	fmt.Println("[INFO] API running on port", config.ApiPort)
+	log.Println("[INFO] Database connection string", config.StringConnectionDB)
+	log.Println("[INFO] API running on port", config.ApiPort)
 
 	// Setup database
 	log.Println("[INFO] Setting up database...")
 	database.Init()
+
+	// Load metrics setup
+	log.Println("[INFO] Setting up Server metrics...")
+	metrics.InitMetrics()
 
 	// Run
 	log.Println("[INFO] Running API!")

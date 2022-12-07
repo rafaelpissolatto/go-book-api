@@ -33,9 +33,19 @@ func Load() {
 		ApiPort = 5000
 	}
 
-	StringConnectionDB = fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True&loc=Local",
+	// StringConnectionDB = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+	// 	os.Getenv("DB_USER"),
+	// 	os.Getenv("DB_PASS"),
+	// 	os.Getenv("DB_NAME"),
+	// 	os.Getenv("DB_HOST"),
+	// 	os.Getenv("DB_PORT"),
+	// )
+
+	// StringConnectionDB = fmt.Sprintf("%s:%s@%s?charset=utf8&parseTime=True&loc=Local",
+	StringConnectionDB = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true",
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASS"),
+		os.Getenv("DB_HOST"),
 		os.Getenv("DB_NAME"),
 	)
 

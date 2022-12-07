@@ -1,0 +1,38 @@
+services:
+
+  api:
+    container_name: api_devbook
+    build:
+      dockerfile: Dockerfile
+      context: .
+    pull_policy: always
+    ports:
+      - "80:5000"
+    env_file:
+      - .env
+    links:
+      - database
+    restart: unless-stopped
+
+  database:
+    container_name: database_postgres
+    image: mysql:5.7
+    command: 
+      - --innodb_use_native_aio=0
+      - --character-set-server=utf8
+      - --collation-server=utf8_unicode_ci
+      - --innodb-flush-method=O_DSYNC
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --explicit_defaults_for_timestamp=true
+      - --ignore-db-dir=lost+found
+    env_file:
+      - .env
+    volumes:
+       - database:/var/lib/mysql:rw
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+
+volumes:
+    database: {}

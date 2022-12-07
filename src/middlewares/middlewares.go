@@ -25,3 +25,11 @@ func Authenticate(next http.HandlerFunc) http.HandlerFunc {
 		next(w, r)
 	}
 }
+
+// Monitor is a middleware that collects metrics using Prometheus Client
+func Monitor(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("[INFO] %s %s %s", r.Method, r.RequestURI, r.Host)
+		next(w, r)
+	}
+}
