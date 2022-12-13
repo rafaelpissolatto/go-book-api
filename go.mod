@@ -19,7 +19,7 @@ require (
 	github.com/prometheus/client_model v0.3.0 // indirect
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
-	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
+	golang.org/x/sys v0.3.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 )
 
@@ -28,5 +28,5 @@ require (
 	github.com/common-nighthawk/go-figure v0.0.0-20210622060536-734e95fb86be
 	github.com/raphamorim/go-rainbow v0.1.0
 	github.com/tomnomnom/xtermcolor v0.0.0-20160428124646-b78803f00a7e // indirect
-	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90
+	golang.org/x/crypto v0.4.0
 )
