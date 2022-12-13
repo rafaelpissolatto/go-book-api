@@ -22,11 +22,14 @@ func Configure(r *mux.Router) *mux.Router {
 	for _, route := range routes {
 		if route.RequireAuthentification {
 			r.HandleFunc(route.URI,
-				middlewares.Monitor(middlewares.Logger(middlewares.Authenticate(route.Function)))).Methods(route.Method)
+				// middlewares.Monitor(middlewares.Logger(middlewares.Authenticate(route.Function)))).Methods(route.Method)
+				middlewares.Authenticate(route.Function)).Methods(route.Method)
 		} else {
 			r.HandleFunc(route.URI,
-				middlewares.Monitor(middlewares.Logger(route.Function))).Methods(route.Method)
+				// middlewares.Monitor(middlewares.Logger(route.Function))).Methods(route.Method)
+				middlewares.Logger(route.Function)).Methods(route.Method)
 		}
+
 	}
 
 	return r

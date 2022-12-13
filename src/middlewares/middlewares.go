@@ -5,6 +5,7 @@ import (
 	"api/src/responses"
 	"log"
 	"net/http"
+	"time"
 )
 
 // Logger write information from the request on the terminal
@@ -33,3 +34,6 @@ func Monitor(next http.HandlerFunc) http.HandlerFunc {
 		next(w, r)
 	}
 }
+
+// StartTime is the time when the server started
+var StartTime = time.Now()
